@@ -24,12 +24,23 @@ class TextField extends StatefulWidget {
 }
 
 class _TextFiledState extends State<TextField> {
+  String _expression = '1+1';
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        // any code
-        );
-    // any code
+    return Expanded(
+        flex: 1,
+        child: Container(
+          child: Align(
+            alignment: Alignment.centerRight,
+            child: Text(
+              _expression,
+              style: TextStyle(
+                fontSize: 64.0,
+              ),
+            ),
+          ),
+        ));
   }
 }
 
