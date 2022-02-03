@@ -49,18 +49,58 @@ class _TextFiledState extends State<TextField> {
 class Keyboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        // any code
-        );
+    return Expanded(
+        flex: 2,
+        child: Center(
+            child: Container(
+          color: const Color(0xff87cefa),
+          child: GridView.count(
+            crossAxisCount: 4,
+            mainAxisSpacing: 3.0,
+            crossAxisSpacing: 3.0,
+            children: [
+              '7',
+              '8',
+              '9',
+              '÷',
+              '4',
+              '5',
+              '6',
+              '×',
+              '1',
+              '2',
+              '3',
+              '-',
+              'C',
+              '0',
+              '=',
+              '+',
+            ].map((key) {
+              return GridTile(
+                child: Button(key),
+              );
+            }).toList(),
+          ),
+        )));
   }
 }
 
 //　キーボタン
 class Button extends StatelessWidget {
+  final _key;
+  Button(this._key);
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        // any code
-        );
+        child: ElevatedButton(
+      onPressed: () {},
+      child: Center(
+        child: Text(
+          _key,
+          style: TextStyle(fontSize: 46.0),
+        ),
+      ),
+    ));
   }
 }
