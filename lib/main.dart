@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -26,6 +27,17 @@ class TextField extends StatefulWidget {
 class _TextFiledState extends State<TextField> {
   String _expression = '1+1';
 
+  final controller = StreamController<String>();
+
+  void _updateText(String letter) {
+    setState(() {
+      if (letter == '=' || letter == 'C')
+        _expression = '';
+      else
+        _expression += letter;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -41,6 +53,18 @@ class _TextFiledState extends State<TextField> {
             ),
           ),
         ));
+  }
+
+  @override
+  void initState() {
+    controller.stream.listen((event) => _updateText(event));
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    controller.close();
+    super.dispose();
   }
 }
 
