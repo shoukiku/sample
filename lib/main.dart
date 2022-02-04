@@ -29,7 +29,7 @@ class _TextFiledState extends State<TextField> {
 
   final controller = StreamController<String>();
 
-  Future<void> _updateText(String letter) async {
+  void _updateText(String letter) {
     setState(() {
       if (letter == '=' || letter == 'C')
         _expression = '';
@@ -56,7 +56,7 @@ class _TextFiledState extends State<TextField> {
   }
 
   @override
-  Future<void> initState() async {
+  void initState() {
     controller.stream.listen((event) => _updateText(event));
     super.initState();
   }
